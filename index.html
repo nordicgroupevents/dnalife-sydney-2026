@@ -71,7 +71,7 @@ p{margin:0;max-width:65ch}
 .lockup .l2{font-family:var(--font-display);font-weight:500;font-size:clamp(26px,4.5vw,34px);line-height:1.15;color:var(--headline)}
 
 .panel{background:var(--tint-10);border-radius:8px;padding:18px;min-width:0}
-.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
 .fact{display:flex;flex-direction:column;gap:2px}
 .fact .k{font-family:var(--font-display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--headline);font-weight:700}
 .fact .v{font-family:var(--font-display);font-weight:500;font-size:22px;color:var(--ink)}
@@ -112,7 +112,7 @@ p{margin:0;max-width:65ch}
 .flag.now{background:var(--cph-pink);color:var(--ink)}
 .flag.next{background:var(--headline);color:var(--on-brand)}
 .tbc{display:inline-block;font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:999px;background:var(--grey-10);color:var(--ink)}
-.notes{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.notes{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}
 .note{display:flex;flex-direction:column;gap:6px}
 .note.hot{background:var(--headline);color:var(--on-brand)}
 .note.hot h3{color:var(--on-brand)}
@@ -134,7 +134,7 @@ ol.steps li::before{content:counter(s);width:26px;height:26px;border-radius:50%;
 .mapfoot{display:flex;flex-wrap:wrap;gap:8px 18px;padding:12px 16px;background:var(--tint-10);font-size:15px}
 .hotel{display:flex;flex-direction:column;gap:6px}
 .hotel .who{font-family:var(--font-display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--headline)}
-.btnlink{display:inline-flex;align-items:center;gap:6px;font-weight:700;text-decoration:none;color:var(--headline)}
+.btnlink{display:inline-flex;align-items:center;gap:6px;font-weight:700;text-decoration:none;color:var(--headline);white-space:nowrap;max-width:100%}
 .btnlink:hover{text-decoration:underline}
 
 /* Tables */
@@ -150,7 +150,7 @@ td.whom{width:46%}
 .chip:hover{background:var(--tint-25)}
 
 /* Team */
-.people{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.people{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr))}
 .person{display:flex;flex-direction:column;gap:12px}
 .person.sel{box-shadow:0 0 0 2px var(--headline)}
 .person header{display:flex;align-items:center;gap:12px}
@@ -165,7 +165,8 @@ td.whom{width:46%}
 .contact{display:flex;flex-direction:column;gap:8px}
 .contact .role{color:var(--muted);font-size:15px}
 .line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.line code{font-family:var(--font-body);font-weight:700;font-size:16px;user-select:all;overflow-wrap:anywhere}
+.line code{font-family:var(--font-body);font-weight:700;font-size:16px;user-select:all;white-space:nowrap;min-width:0}
+.nobr{white-space:nowrap}
 .copy{font:inherit;font-size:12px;font-weight:700;cursor:pointer;border:1px solid var(--tint-60);background:var(--paper);color:var(--headline);padding:2px 9px;border-radius:999px}
 .copy:hover{background:var(--tint-25)}
 .sos{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:20px;border-radius:8px;background:var(--headline);color:var(--on-brand)}
@@ -213,7 +214,7 @@ body.editing main .wrap{padding-bottom:110px}
 .band .theme .ed:focus{color:var(--ink)}
 
 /* Speakers */
-.speakers{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.speakers{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))}
 .speaker{display:flex;flex-direction:column;gap:12px}
 .sp-head{display:flex;gap:14px;align-items:center}
 .sp-photo{width:76px;height:76px;flex:none;object-fit:cover;border-radius:50% 50% 50% 0;background:var(--tint-25)}
@@ -277,7 +278,7 @@ body.editing main .wrap{padding-bottom:110px}
 .rsvp + .rsvp-after{margin-top:12px}
 
 .res-h{margin-bottom:4px}
-.res{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.res{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))}
 .res a,.res .resrow{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:8px;background:var(--tint-10);color:var(--ink);text-decoration:none;min-height:64px}
 .res a:hover{background:var(--tint-25)}
 .res a:focus-visible{outline:3px solid var(--headline);outline-offset:2px}
@@ -399,7 +400,7 @@ section{gap:20px}
   }
  ],
  "welcome": "We're delighted you're joining us for two days of clinically focused training on DNA Core and DNA Gut. This guide has the full programme, your educators, how to get to the venue and everything practical for your visit.",
- "welcomeContact": "Any questions before you travel? Email us at {events@nordicgroup.eu|mailto:events@nordicgroup.eu} or {info@dnalife.healthcare|mailto:info@dnalife.healthcare}.",
+ "welcomeContact": "Any questions before you travel? Email us at {scott@nordicgroup.eu|mailto:scott@nordicgroup.eu} or {info@dnalife.healthcare|mailto:info@dnalife.healthcare}.",
  "glance": [
   {
    "k": "When",
@@ -761,7 +762,8 @@ section{gap:20px}
    "name": "Scott Larson",
    "role": "Questions before or during the course",
    "lines": [
-    "[CONTACT DETAILS TO COME]"
+    "scott@nordicgroup.eu",
+    "+64 22 538 3886"
    ]
   },
   {
@@ -781,7 +783,7 @@ section{gap:20px}
   }
  ],
  "social": "Tag us on Instagram and LinkedIn: @dnalifelabs · Upcoming courses: {education.dnalifevms.com|https://education.dnalifevms.com/}",
- "footer": "dnalife Certification Course · Sydney 2026 · Delegate guide · Questions: events@nordicgroup.eu",
+ "footer": "dnalife Certification Course · Sydney 2026 · Delegate guide · Questions: scott@nordicgroup.eu",
  "socialTitle": "Share the course",
  "flash": "#f7b733",
  "insta": [
@@ -1086,7 +1088,33 @@ function render(){
   if (tab.id==='team' && selPerson){ const el=document.getElementById('p-'+selPerson); el && el.scrollIntoView({block:'center'}); }
   document.body.classList.toggle('editing', editing);
   updateBar();
+  keepWhole();
 }
+
+// ---------- Keep email addresses and web addresses on one line; shrink them slightly if they don't fit ----------
+const ADDR_RE = /([\w.+-]+@[\w-]+(?:\.[\w-]+)+|(?:https?:\/\/)?(?:[\w-]+\.)+(?:com|eu|healthcare|org|net|dk|de|au|nz|io|co|uk)\b(?:\/[^\s<>()]*[^\s<>().,])?)/gi;
+function keepWhole(){
+  if (editing) return;
+  const root = document.getElementById('view'); if (!root) return;
+  const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {acceptNode: n => (n.parentElement.closest('.nobr,script,style,svg,[data-path]') || !ADDR_RE.test(n.nodeValue)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT});
+  const nodes = []; while (tw.nextNode()) nodes.push(tw.currentNode);
+  nodes.forEach(n => { ADDR_RE.lastIndex = 0; const f = document.createDocumentFragment(); let last = 0, m;
+    const v = n.nodeValue; while ((m = ADDR_RE.exec(v))){ if (m.index>last) f.append(v.slice(last, m.index)); const sp = document.createElement('span'); sp.className='nobr'; sp.textContent = m[0]; f.append(sp); last = m.index + m[0].length; }
+    if (last < v.length) f.append(v.slice(last)); n.replaceWith(f); });
+  fitWhole();
+}
+function fitWhole(){
+  document.querySelectorAll('#view .nobr, #view .line code, #view .btnlink').forEach(el => {
+    if (el.classList.contains('nobr') && el.closest('.btnlink')) return;
+    el.style.fontSize = '';
+    let c = el.parentElement; while (c && getComputedStyle(c).display.startsWith('inline')) c = c.parentElement;
+    if (!c) return; const cs = getComputedStyle(c);
+    const avail = c.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const w = el.getBoundingClientRect().width;
+    if (avail > 0 && w > avail){ const fs = parseFloat(getComputedStyle(el).fontSize); el.style.fontSize = Math.max(10, Math.floor(fs * avail / w * 10) / 10 - 0.2) + 'px'; }
+  });
+}
+{ let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fitWhole, 120); }); if (document.fonts) document.fonts.ready.then(fitWhole); }
 
 // ---------- Edit bar ----------
 const bar = document.getElementById('editbar'), barMsg = document.getElementById('editmsg');
