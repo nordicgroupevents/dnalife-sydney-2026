@@ -421,7 +421,7 @@ section{gap:20px}
   {
    "k": "Where",
    "v": "Sofitel Sydney Wentworth",
-   "s": "61–101 Phillip Street, Sydney NSW 2000"
+   "s": "Adelaide Room · 61–101 Phillip Street, Sydney NSW 2000"
   },
   {
    "k": "Educators",
@@ -718,7 +718,7 @@ section{gap:20px}
     "who": "Venue",
     "name": "Sofitel Sydney Wentworth",
     "addr": "61–101 Phillip Street, Sydney NSW 2000",
-    "s": "All training takes place here. Parking: Wilson Parking behind the hotel on Bligh Street.",
+    "s": "All training takes place in the Adelaide Room. Parking: Wilson Parking behind the hotel on Bligh Street.",
     "q": "Sofitel Sydney Wentworth, 61-101 Phillip Street, Sydney NSW 2000"
    },
    {
@@ -1075,7 +1075,10 @@ V.resources = () => {
   ${R.groups.map((g,gi)=>`<section>
     <h3 class="res-h">${T(`resources.groups.${gi}.h`)}</h3>
     ${g.s?`<p class="muted">${T(`resources.groups.${gi}.s`)}</p>`:''}
-    ${g.items && g.items.length ? `<ul class="res">${g.items.map((it,ii)=>`<li>${editing?'<div class="resrow">':`<a href="${esc(base+it.file)}" download target="_blank" rel="noopener">`}<span class="res-ic" aria-hidden="true">${esc(it.ext||'PDF')}</span><span class="res-n">${editing?T(`resources.groups.${gi}.items.${ii}.name`):esc(it.name)}<small>${esc(it.meta||'')}${it.meta?' · ':''}${mb(it.bytes)}</small></span><span class="res-dl">${U('Download')} ↓</span>${editing?'</div>':'</a>'}</li>`).join('')}</ul>`
+    ${g.items && g.items.length ? `<ul class="res">${g.items.map((it,ii)=>{ const plain = editing || (!it.file && !it.href);
+      const open = plain ? '<div class="resrow">' : it.href ? `<a href="${esc(it.href)}" target="_blank" rel="noopener">` : `<a href="${esc(base+it.file)}" download target="_blank" rel="noopener">`;
+      const act = it.href ? `${U('Open')} ↗` : it.file ? `${U('Download')} ↓` : '';
+      return `<li>${open}<span class="res-ic" aria-hidden="true">${esc(it.ext||'PDF')}</span><span class="res-n">${editing?T(`resources.groups.${gi}.items.${ii}.name`):esc(it.name)}<small>${esc(it.meta||'')}${it.meta&&it.bytes?' · ':''}${it.bytes?mb(it.bytes):''}</small></span>${act?`<span class="res-dl">${act}</span>`:''}${plain?'</div>':'</a>'}</li>`; }).join('')}</ul>`
       : `<p class="res-empty">${T(`resources.groups.${gi}.empty`)}</p>`}
   </section>`).join('')}`;
 };
