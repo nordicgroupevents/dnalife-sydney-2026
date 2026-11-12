@@ -139,13 +139,13 @@ ol.steps li::before{content:counter(s);width:26px;height:26px;border-radius:50%;
 
 /* Tables */
 .tablebox{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:520px}
+table{border-collapse:collapse;width:100%}
 th,td{text-align:left;padding:11px 12px;border-top:1.5px dotted var(--tint-60);vertical-align:top}
 tbody tr:last-child td{border-bottom:1.5px dotted var(--tint-60)}
 thead th{border-top:0;font-family:var(--font-display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-brand);font-weight:700;background:var(--headline)}
 thead th:first-child{border-radius:8px 0 0 0}
 thead th:last-child{border-radius:0 8px 0 0}
-td.whom{white-space:nowrap}
+td.whom{width:46%}
 .chip{display:inline-block;padding:3px 11px;border-radius:999px;background:var(--tint-10);color:var(--headline);font-family:var(--font-display);font-weight:500;font-size:15px;margin:0 4px 4px 0;cursor:pointer;border:0}
 .chip:hover{background:var(--tint-25)}
 
@@ -483,7 +483,7 @@ section{gap:20px}
     },
     {
      "t": "10:30",
-     "title": "Break – Nordic Smoothie",
+     "title": "Break",
      "k": "soft"
     },
     {
@@ -529,10 +529,6 @@ section{gap:20px}
    ],
    "notes": [
     {
-     "h": "Nordic Smoothie",
-     "b": "We serve our Nordic Smoothie in the morning break on both days."
-    },
-    {
      "h": "Your evening",
      "b": "Saturday evening is free. Circular Quay and the harbour are about a 10-minute walk from the venue."
     }
@@ -566,7 +562,7 @@ section{gap:20px}
     },
     {
      "t": "10:15",
-     "title": "Break – Nordic Smoothie",
+     "title": "Break",
      "k": "soft"
     },
     {
@@ -737,7 +733,7 @@ section{gap:20px}
   },
   {
    "h": "Food and drink",
-   "b": "Drinks and snacks will be provided, as well as a gluten-free lunch that will include plant-based and dairy-free options. There will be one break in the morning and one in the afternoon on both days. Our Nordic Smoothie is served in the morning break."
+   "b": "Drinks and snacks will be provided, as well as a gluten-free lunch that will include plant-based and dairy-free options. There will be one break in the morning and one in the afternoon on both days."
   },
   {
    "h": "Programme",
@@ -762,11 +758,10 @@ section{gap:20px}
  ],
  "contacts": [
   {
-   "name": "Events Team",
+   "name": "Scott Larson",
    "role": "Questions before or during the course",
    "lines": [
-    "events@nordicgroup.eu",
-    "+45 33 75 10 00"
+    "[CONTACT DETAILS TO COME]"
    ]
   },
   {
@@ -823,7 +818,7 @@ const DEL = p => editing ? `<button type="button" class="edx" data-del="${p}" ar
 const NEW = {
   sessions:{t:'00:00', title:'New session', who:'Speaker'}, notes:{h:'Heading', b:'Text'}, glance:{k:'Label', v:'Value', s:'Detail'},
   keyTimes:{d:'Day', t:'00:00', s:'What happens'}, yourDay:{d:'Time', t:'Task', s:'Detail'}, practical:{h:'Heading', b:'Text'},
-  contacts:{name:'Name', role:'Role', lines:['Phone or email']}, lines:'Phone or email', rows:{what:'Task', where:'Where', who:'Name'},
+  contacts:{name:'Name', role:'Role', lines:['Phone or email']}, lines:'Phone or email', rows:{what:'Task', who:'Name'},
   expect:{h:'Heading', b:'Text'}, speakers:{key:'', match:'', name:'Speaker name', creds:'', role:'Role', bio:'Short biography'}, from:'New step', home:'New step', hotels:{who:'Who', name:'Hotel name', addr:'Address', s:'Dates or notes', q:''},
 };
 
@@ -1020,7 +1015,7 @@ V.team = () => {
     <div class="people">${names.map(p=>`
       <div class="panel person ${selPerson===p?'sel':''}" id="p-${esc(p)}">
         <header><span class="avatar">${esc(p[0])}</span><div><h3>${esc(leads[p]?.full||p)}</h3><span class="muted" style="font-size:14px">${esc(leads[p]?.role || people[p].length+(people[p].length===1?' responsibility':' responsibilities'))}</span></div></header>
-        <ul>${people[p].map(r=>`<li class="${r.when.startsWith('Thu')?'thu':''}">${esc(r.what)}<span>${esc(r.where)} · ${esc(r.when)}</span></li>`).join('')}</ul>
+        <ul>${people[p].map(r=>`<li class="${r.when.startsWith('Thu')?'thu':''}">${esc(r.what)}<span>${esc(r.when)}</span></li>`).join('')}</ul>
       </div>`).join('')}</div>
     <p class="muted" style="font-size:14px">Dark blue marker: Thursday set-up only. Light blue marker: daily role, Friday to Sunday. Bell ringer at the end of each break is anyone's job.</p>
   </section>`;
@@ -1066,8 +1061,8 @@ V.contacts = () => `
 
 function table(p){
   const rows = get(p);
-  return `<div class="tablebox"><table><thead><tr><th>What</th><th>Where</th><th>Who</th></tr></thead><tbody>${
-    rows.map((r,i)=>`<tr><td>${T(`${p}.${i}.what`)}</td><td>${T(`${p}.${i}.where`)}</td><td class="whom">${editing
+  return `<div class="tablebox"><table><thead><tr><th>What</th><th>Who</th></tr></thead><tbody>${
+    rows.map((r,i)=>`<tr><td>${T(`${p}.${i}.what`)}</td><td class="whom">${editing
       ? `<span class="edrow">${T(`${p}.${i}.who`)}${DEL(`${p}.${i}`)}</span>`
       : String(r.who).split('/').map(x=>x.trim()).map(x=>x==='Anyone'?'<span class="muted">Anyone</span>':(D.tabs.some(t=>t.id==='team') ? `<button type="button" class="chip" data-person="${esc(x)}">${esc(x)}</button>` : `<span class="chip" style="cursor:default">${esc(x)}</span>`)).join('')}</td></tr>`).join('')
   }</tbody></table></div>${ADD(p,'Add a row')}${editing?'<p class="muted" style="font-size:14px">Separate names with a slash, for example: Anabel / Grace</p>':''}`;
